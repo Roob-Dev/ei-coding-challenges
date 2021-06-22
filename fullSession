@@ -1,0 +1,27 @@
+fullSession()
+In this function, you will use the the welcome(), tell(), and goodbye() functions in that order. You will combine the responses from each. In the case of the tell() function, your output should look like the getFortune() function above. In fact, you are welcome to re-use parts of that function in this solution to avoid duplicate code.
+
+
+function fullSession(question) {
+  //create empty array which will be returned at the end
+  let finalArr = []
+  
+  return welcome()
+  .then((returnedMsg) => {
+    finalArr.push(returnedMsg);
+  })
+  //call the getFortune function, then concatenate the array it returns, into the finalArr array
+  .then(() => getFortune(question))
+    .then((fortune) => {
+    finalArr = finalArr.concat(fortune);
+  })
+  .catch((error) => {
+      finalArr.push(`There was an error: ${error}`)
+    })
+  .then(() => goodbye())
+    .then((gMessage) => {
+    finalArr.push(gMessage)
+    return finalArr
+  })
+
+}
