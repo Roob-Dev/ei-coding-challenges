@@ -1,0 +1,14 @@
+getFortune()
+Write a function that takes a single argument, a question. Use the tell() function in the getFortune() function and then return both the question and the fortune with text before each.
+
+function getFortune(question) {
+  
+  return tell(question)
+    .then((fortune) => {
+    return ([`Your question was: ${question}`,`Your fortune is: ${fortune}`]);
+    })
+    .catch((error) => {
+      return (`There was an error: ${error}`)
+    });
+
+}
