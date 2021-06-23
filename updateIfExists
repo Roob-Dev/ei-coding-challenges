@@ -1,0 +1,35 @@
+updateIfExists()
+The updateIfExists() function takes an id and a body, before doing the following:
+
+Make a request to the API to ensure that the specified constellation exists.
+
+If it does not exist, the error message is logged.
+
+If it does exist, make a PUT request to update that constellation. Then, the response is logged.
+
+You need to update the code so that it does the following:
+
+Instead of logging the response and the error, return each.
+
+"Flatten" the code so that there are no calls to .then() inside of other .then() calls.
+
+const axios = require("../utils/axios");
+const BASE_URL = "http://localhost:5000";
+
+function updateIfExists(id, body) {
+  const url = `${BASE_URL}/constellations/${id}`;
+  return axios
+    .get(url)
+    .then((response) => {
+      return axios.put(url, response).then(({ data }) => {
+        return(data);
+      })
+    })
+    .catch((error) => {
+      return error.message
+    });
+}
+
+module.exports = {
+  updateIfExists,
+};
