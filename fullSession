@@ -15,9 +15,6 @@ function fullSession(question) {
     .then((fortune) => {
     finalArr = finalArr.concat(fortune);
   })
-  .catch((error) => {
-      finalArr.push(`There was an error: ${error}`)
-    })
   .then(() => goodbye())
     .then((gMessage) => {
     finalArr.push(gMessage)
